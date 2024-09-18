@@ -139,24 +139,7 @@ Here, `globalConstant` is declared globally and can be accessed within the `prin
 
 ---
 
-#### **2. Local Scope**
-
-Constants and variables declared inside a function or block (e.g., inside an `if` or `for` loop) are in **local scope**. They are only accessible within the block where they are declared.
-
-```swift
-func greet() {
-    let message = "Hello, World!"
-    print(message)
-}
-
-print(message)  // Error: message is not accessible outside greet()
-```
-
-In this example, `message` is declared inside the `greet` function and cannot be accessed outside the function. 
-
----
-
-#### **3. Function Scope**
+#### **2. Function Scope**
 
 Variables declared within a function are accessible only within that function. Once the function ends, the variables go out of scope, and their memory is deallocated.
 
@@ -174,7 +157,7 @@ Here, `result` is in the scope of the `calculate` function and is not accessible
 
 ---
 
-#### **4. Loop Scope**
+#### **3. Loop Scope**
 
 Variables declared inside a loop are local to the loop and cannot be accessed outside of it.
 
@@ -191,7 +174,7 @@ print(temp)  // Error: temp is not accessible outside the loop
 
 ---
 
-#### **5. Conditional Scope**
+#### **4. Conditional Scope**
 
 Similarly, constants and variables declared inside conditional statements (`if`, `guard`, `switch`) are local to those blocks.
 
@@ -205,28 +188,6 @@ print(condition)  // Error: condition is not accessible outside the if block
 ```
 
 The constant `condition` is scoped to the `if` block and cannot be accessed outside of it.
-
----
-
-#### **6. Guard and Scope**
-
-When using `guard`, any variable or constant unwrapped or initialized in the guard statement is accessible in the remaining part of the function (after the guard statement). This is what makes `guard` especially useful for unwrapping optionals.
-
-```swift
-func process(age: Int?) {
-    guard let validAge = age else {
-        print("Age not provided")
-        return
-    }
-    
-    // validAge is accessible here because of guard let
-    print("Processing age \(validAge)")
-}
-
-process(age: 25)  // Outputs: Processing age 25
-```
-
-In this example, `validAge` is accessible throughout the rest of the function because it was unwrapped by the `guard` statement.
 
 ---
 
